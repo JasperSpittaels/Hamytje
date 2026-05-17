@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $bericht = $_POST['bericht'];
     
-    $naar = "info@uwwebsite.nl";
+    $naar = "jasper.spittaels@gmail.com";
     $onderwerp = "Nieuw bericht van " . $naam;
     $headers = "From: " . $email;
 }
