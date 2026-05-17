@@ -16,43 +16,41 @@
     <h1>Welkom bij Hamytje</h1>
 
     <form id="contactFormulier">
-        
+    
         <label for="naam">Naam:</label><br>
         <input type="text" id="naam" required><br><br>
-
+    
         <label for="email">E-mailadres:</label><br>
         <input type="email" id="email" required><br><br>
-
+    
         <label for="bericht">Bericht:</label><br>
         <textarea id="bericht" required></textarea><br><br>
-
+    
         <button type="submit">Open e-mailprogramma</button>
     </form>
-
+    
     <script>
         document.getElementById("contactFormulier").addEventListener("submit", function(event) {
-            // Voorkom dat de pagina herlaadt
+            // Dit stopt de standaard 405-foutveroorzakende actie van de browser
             event.preventDefault();
-
-            // 1. Haal de waarden uit de invoervelden
+    
+            // Gegevens uitlezen
             const naam = document.getElementById("naam").value;
             const email = document.getElementById("email").value;
             const bericht = document.getElementById("bericht").value;
-
-            // 2. Uw eigen e-mailadres waar het naartoe moet
+    
+            // Uw e-mailadres
             const naarEmailladres = "jasper.spittaels@gmail.com"; 
             
-            // 3. Maak het onderwerp en de tekst van de mail op
-            const onderwerp = encodeURIComponent("Nieuw bericht van " . naam);
-            
+            // Onderwerp en inhoud samenstellen
+            const onderwerp = encodeURIComponent("Nieuw bericht van " + naam);
             const emailInhoud = "Naam: " + naam + "\n" +
-                                "E-mail van bezoeker: " + email + "\n\n" +
+                                "E-mail: " + email + "\n\n" +
                                 "Bericht:\n" + bericht;
                                 
-            // encodeURIComponent zorgt ervoor dat regeleinden (\n) en spaties goed worden vertaald naar een URL
             const opgemaakteInhoud = encodeURIComponent(emailInhoud);
-
-            // 4. Open de mailto-link op de achtergrond
+    
+            // De mailto-link openen
             window.location.href = "mailto:" + naarEmailladres + "?subject=" + onderwerp + "&body=" + opgemaakteInhoud;
         });
     </script>
